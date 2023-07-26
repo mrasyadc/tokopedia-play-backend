@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const newProduct = new Product({
     title: "A",
-    productURL: "A.com",
+    productURL: "AB.com",
     price: 100,
   });
 
