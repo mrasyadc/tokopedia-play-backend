@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
     const videos = await getVideos();
     res.status(200).json({ videos });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message });
   }
 });
 
@@ -38,7 +38,7 @@ router.get("/products/:id", async (req, res) => {
     const products = await getProduct(videoId);
     res.status(200).json({ products: products });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message });
   }
 });
 
@@ -50,7 +50,7 @@ router.get("/comments/:id", async (req, res) => {
     console.log(comment);
     res.status(200).json({ comment: comment });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message });
   }
 });
 
@@ -65,7 +65,7 @@ router.post("/comment", async (req, res) => {
     const data = await pushComment(username, comment, videoId);
     res.status(200).json({ success: { data } });
   } catch (e) {
-    res.status(500).json({ failed: e.message });
+    res.status(400).json({ failed: e.message });
   }
 });
 
