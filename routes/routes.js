@@ -1,5 +1,7 @@
 const express = require("express");
 const getVideos = require("../services/video");
+const { getComment, pushComment } = require("../services/comment");
+const getProduct = require("../services/product");
 
 const router = express.Router();
 
@@ -18,37 +20,41 @@ const router = express.Router();
 //   }
 // });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // call services to get all list video
-    const videos = getVideos();
+    const videos = await getVideos();
     res.status(200).json({ videos });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.get("/products/:id", (req, res) => {
+router.get("/products/:id", async (req, res) => {
   try {
     const videoId = req.params.id;
-    res.status(200).json({ videoId: videoId });
+
     // call services to get all products list in a video
+    const products = await getProduct(videoId);
+    res.status(200).json({ products: products });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.get("/comments/:id", (req, res) => {
+router.get("/comments/:id", async (req, res) => {
   try {
     const videoId = req.params.id;
-    res.status(200).json({ videoId: videoId });
     // call services to get all list comment in a video
+    const comment = await getComment(videoId);
+    console.log(comment);
+    res.status(200).json({ comment: comment });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.post("/comment", (req, res) => {
+router.post("/comment", async (req, res) => {
   try {
     const { username, comment, videoId } = req.body;
     if (!username || !comment || !videoId) {
@@ -56,12 +62,10 @@ router.post("/comment", (req, res) => {
     }
 
     // call service to post comment
-
-    res
-      .status(200)
-      .json({ username: username, comment: comment, videoId: videoId });
+    const data = await pushComment(username, comment, videoId);
+    res.status(200).json({ success: { data } });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ failed: e.message });
   }
 });
 
