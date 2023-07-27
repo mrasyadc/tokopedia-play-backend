@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const commentSchema = new mongoose.Schema({
   username: {
@@ -9,7 +10,7 @@ const commentSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
-  productId: { type: Schema.Types.ObjectId, ref: "Video", required: true },
+  videoId: { type: Schema.Types.ObjectId, ref: "Video", required: true },
   createdAt: {
     type: Date,
     immutable: true,

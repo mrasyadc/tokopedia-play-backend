@@ -1,5 +1,5 @@
 const express = require("express");
-const Product = require("../models/product");
+const getVideos = require("../services/video");
 
 const router = express.Router();
 
@@ -21,7 +21,8 @@ const router = express.Router();
 router.get("/", (req, res) => {
   try {
     // call services to get all list video
-    res.status(200).json({ message: "Hello from server" });
+    const videos = getVideos();
+    res.status(200).json({ videos });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
