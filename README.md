@@ -3,6 +3,7 @@ Midterm task of Generasi GIGIH 3.0 by GoTo Impact by Muhammad Rasyad Caesarardhi
 
 # Database Structure
 Database are divided into 3 collections (Comment, Product, and Video)
+
 <img width="443" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/e693de4f-5acc-4844-953c-69abde38b250">
 
 - 1 video have many comments but not included in the document inside the video document but are separated. 1 comment are responsible for 1 comment inside a video. a comment is linked to a video.
@@ -37,7 +38,7 @@ API Structure are defined in here
 ```
 **GET /api/products/:id**
 ----
-  Returns the specified user.
+  Returns the products listed on a specified video.
 * **URL Params**  
   *Required:* `id=[string]`
 * **Data Params**  
@@ -59,3 +60,56 @@ API Structure are defined in here
 * **Error Response:**  
   * **Code:** 400  
   **Content:** `{ error : "Error messages" }`
+
+**GET /api/comments/:id**
+----
+  Returns the comments listed on a specified video.
+* **URL Params**  
+  *Required:* `id=[string]`
+* **Data Params**  
+  None
+* **Headers**  
+  Content-Type: application/json  
+* **Success Response:** 
+* **Code:** 200  
+  **Content:**
+  ```
+  {
+    comment: [
+                {username: "string", comment: "string", videoId: "string Object Id", createdAt: Date},
+                {username: "string", comment: "string", videoId: "string Object Id", createdAt: Date},
+                {username: "string", comment: "string", videoId: "string Object Id", createdAt: Date}
+    ]
+  }
+  ``` 
+* **Error Response:**  
+  * **Code:** 400  
+  **Content:** `{ error : "Error messages" }`
+    
+**POST /api/comment**
+----
+  Creates a new comment and returns the new object.
+* **URL Params**  
+  None
+* **Data Params**  
+```
+  {
+    username: string
+    comment: string
+    videoId: string(Video Obj ID)
+  }
+```
+* **Headers**  
+  Content-Type: application/json  
+* **Code:** 200  
+  **Content:**
+  ```
+  {
+    success: {
+                username: "string", comment: "string", videoId: "string Object Id", createdAt: Date
+    }
+  }
+  ``` 
+* **Error Response:**  
+  * **Code:** 400  
+  **Content:** `{ failed : "Insufficient parameters" }`
