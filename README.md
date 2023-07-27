@@ -35,3 +35,27 @@ API Structure are defined in here
   ]
 }
 ```
+**GET /api/products/:id**
+----
+  Returns the specified user.
+* **URL Params**  
+  *Required:* `id=[string]`
+* **Data Params**  
+  None
+* **Headers**  
+  Content-Type: application/json  
+* **Success Response:** 
+* **Code:** 200  
+  **Content:**
+  ```
+  {
+    products: [
+                {title: "string", productURL: "string", price: number},
+                {title: "string", productURL: "string", price: number},
+                {title: "string", productURL: "string", price: number},
+    ]
+  }
+  ``` 
+* **Error Response:**  
+  * **Code:** 400  
+  **Content:** `{ error : "Error messages" }`
