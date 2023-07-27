@@ -62,6 +62,10 @@ API Structure are defined in here
   ]
 }
 ```
+* **Example**
+  
+  <img width="627" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/3e3621e8-e304-4aa0-ac74-db4d3adaba52">
+
 **GET /api/products/:id**
 ----
   Returns the products listed on a specified video.
@@ -86,6 +90,10 @@ API Structure are defined in here
 * **Error Response:**  
   * **Code:** 400  
   **Content:** `{ error : "Error messages" }`
+* **Example**
+
+  <img width="627" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/4cc0f737-983f-47af-8e2d-1e06b6ee50bc">
+
 
 **GET /api/comments/:id**
 ----
@@ -111,7 +119,10 @@ API Structure are defined in here
 * **Error Response:**  
   * **Code:** 400  
   **Content:** `{ error : "Error messages" }`
-    
+* **Example**
+
+  <img width="627" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/52f651d0-5fe8-4bbc-b1d6-c504782bd005">
+
 **POST /api/comment**
 ----
   Creates a new comment and returns the new object.
@@ -139,3 +150,8 @@ API Structure are defined in here
 * **Error Response:**  
   * **Code:** 400  
   **Content:** `{ failed : "Insufficient parameters" }`
+* **Example**
+
+  <img width="627" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/fb5f1c1b-ebb9-4a0d-9204-ce99f15dd22a">
+
+  <img width="944" alt="image" src="https://github.com/mrasyadc/tokopedia-play-backend/assets/56964497/9b503692-9470-4ff8-bade-b8713b7c16e4">
